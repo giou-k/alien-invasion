@@ -42,7 +42,7 @@ func main() {
 		case 0:
 			continue
 		case 1:
-			continue // Move aliens
+			m.Move(currentCity)
 		case 2:
 			m.Fight(currentCity)
 		}

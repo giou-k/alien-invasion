@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/cosmos/alien-invasion/world"
+	"github.com/giou-k/alien-invasion/world"
 	"log"
 )
 

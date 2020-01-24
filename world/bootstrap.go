@@ -47,8 +47,7 @@ func (m *Map) Bootstrap() error {
 		}
 		city.Directions = make(map[string]string)
 
-		// Check if city has directions to other cities.(should we assume that it has, even though they are not in the
-		// input file?)
+		// Check if city has directions to other cities.
 		if len(s) > 1 {
 			for _, v := range s[1:] {
 				directionTo := strings.Split(v, "=")

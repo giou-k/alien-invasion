@@ -16,7 +16,7 @@ type City struct {
 	Uid int
 	Name string
 	Directions map[string]string
-	Alien *Alien
+	Alien []*Alien
 }
 
 // Bootstrap creates the world X and its cities based on the input file worldxin.txt.

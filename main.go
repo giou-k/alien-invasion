@@ -26,13 +26,27 @@ func main() {
 	// Firstly bootstrap the world.
 	err := m.Bootstrap()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("error in bootstrap of the world: ",err)
 		return
 	}
 
 	// Secondly input the aliens randomly.
+	err = m.InputAliens(alienNum)
+	if err != nil {
+		log.Fatal("error while matching aliens with cities: ", err)
+	}
 
 	// Thirdly start the game.
+	for _, currentCity := range m.Cities {
+		switch len(currentCity.Alien) {
+		case 0:
+			continue
+		case 1:
+			continue // Move aliens
+		case 2:
+			m.Fight(currentCity)
+		}
+	}
 
 	// Lastly print the outcome.
 }

@@ -6,10 +6,10 @@ import (
 )
 
 type Alien struct {
-	Uid int
+	Uid      int
 	CityName string
-	Dead bool
-	Trapped bool
+	Dead     bool
+	Trapped  bool
 }
 
 // InputAliens creates the aliens and places them randomly in a city. If a city has already two aliens, then we don't
@@ -26,8 +26,7 @@ func (m *Map) InputAliens(alienNum int) error {
 			if currentCity.Uid == randCityUid {
 				// Check if city has already two aliens.
 				if len(currentCity.Alien) == 2 {
-					//retryInvasion := []int{alienUid}
-					continue // Fixme this alien will never invade a city.
+					continue
 				}
 
 				// Create new alien.
@@ -44,16 +43,15 @@ func (m *Map) InputAliens(alienNum int) error {
 			}
 		}
 	}
-
 	return nil
 }
 
 func newAlien(i int, cityName string) *Alien {
 	return &Alien{
-		Uid:     i,
-		CityName:    cityName,
-		Dead:    false,
-		Trapped: false,
+		Uid:      i,
+		CityName: cityName,
+		Dead:     false,
+		Trapped:  false,
 	}
 }
 

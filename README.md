@@ -20,7 +20,7 @@ When two aliens end up in the same place, they fight, and in the process kill ea
 ### How to run
 * `git clone https://github.com/giou-k/alien-invasion.git`
 * `cd alien-invasion`
-* `go run main.go -n=<number of aliens>, default: n=3`
+* `go run main.go -n=<number of aliens>, default: n=16`
 
 ### Assumptions
 * Assumed that the input file has fixed format, like that the first word is the name of the city and after that we have

@@ -22,7 +22,7 @@ func main() {
 		return
 	}
 
-	flag.IntVar(&alienNum, "n", 3, "number of aliens. default: 3")
+	flag.IntVar(&alienNum, "n", 16, "number of aliens. default: 3")
 	flag.Parse()
 
 	if alienNum == 0 || alienNum > 2*len(m.Cities) {
@@ -40,7 +40,7 @@ func main() {
 	// If a city has no aliens, then do nothing
 	// If a city has one alien, move that alien to another city. The new city must have none or one alien.
 	// If a city has two aliens, let them fight and destroy the city. Delete the city and the paths to or out of it.
-	for i := 0; i < 20; i++ {
+	for i := 0; i < 100; i++ {
 		for _, currentCity := range m.Cities {
 			switch len(currentCity.Alien) {
 			case 0:

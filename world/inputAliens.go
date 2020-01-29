@@ -25,18 +25,24 @@ func (m *Map) InputAliens(alienNum int) error {
 		for _, currentCity := range m.Cities {
 			if currentCity.Uid == randCityUid {
 				// Check if city has already two aliens.
-				if len(currentCity.Alien) == 2 {
+				if len(currentCity.Alien) == 2 { // it might be ok, cause the first aliens will always be inserted in
+					// the first index, so if we have a second  then kaboom.checkit.
+					// If not a new random city uid is given, then this aliens will not invade any city.
+					rand.Seed(time.Now().UnixNano())
+
+					// The range of the random number must start from the cities that have not yet been used.
+					randCityUid = rand.Intn(len(m.Cities)-currentCity.Uid) + currentCity.Uid
 					continue
 				}
 
 				// Create new alien.
 				alien := newAlien(alienUid, currentCity.Name)
 
-				// Pass alien value to city
+				// Pass alien value to city.
 				m.setAlien(alien, currentCity.Name)
 
 				// Pass alien value to Map.
-				m.Aliens[alienUid] = alien
+				m.Aliens[alien.Uid] = alien
 
 				// no need to go to next iterations
 				break

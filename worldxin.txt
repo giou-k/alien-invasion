@@ -1,7 +1,11 @@
 Foo north=Bar east=Hou south=Qu-ux west=Baz
-Baz north=Bee east=Foo
+Baz north=Bee east=Foo south=Bou
 
-Bar south=Foo west=Bee
+Bar east=Nak south=Foo west=Bee
 Bee south=Baz east=Bar
-Qu-ux north=Foo
-Hou west=Foo
+Qu-ux north=Foo east=Sat west=Bou
+Hou north=Nak west=Foo south=Sat
+
+Bou north=Baz east=Qu-ux
+Sat north=Hou west=Qu-ux
+Nak south=Hou west=Bar

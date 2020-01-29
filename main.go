@@ -36,15 +36,32 @@ func main() {
 		log.Fatal("error while matching aliens with cities: ", err)
 	}
 
-	// Thirdly start the game.
-	for _, currentCity := range m.Cities {
-		switch len(currentCity.Alien) {
-		case 0:
-			continue
-		case 1:
-			m.Move(currentCity)
-		case 2:
-			m.Fight(currentCity)
+	// Iterate through cities.
+	// If a city has no aliens, then do nothing
+	// If a city has one alien, move that alien to another city. The new city must have none or one alien.
+	// If a city has two aliens, let them fight and destroy the city. Delete the city and the paths to or out of it.
+	for i := 0; i < 20; i++ {
+		for _, currentCity := range m.Cities {
+			switch len(currentCity.Alien) {
+			case 0:
+				continue
+			case 1:
+				trapped := m.Trap(currentCity)
+				if trapped {
+					continue
+				}
+				m.Move(currentCity)
+			case 2:
+				m.Fight(currentCity)
+			}
+		}
+		if len(m.Cities) == len(m.CitiesTrapped) {
+			fmt.Println("Aliens are trapped inside cities. The End.")
+			return
+		}
+		if len(m.Aliens) == 0 {
+			fmt.Println("All aliens are dead. The End.")
+			return
 		}
 	}
 

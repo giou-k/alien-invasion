@@ -3,7 +3,6 @@ package world
 import (
 	"bufio"
 	"errors"
-	"fmt"
 	"os"
 	"strings"
 )
@@ -68,21 +67,4 @@ func (m *Map) Bootstrap() error {
 	}
 
 	return nil
-}
-
-func (m *Map) Trap(city *City) bool {
-	// Check if city's alien is already marked as trapped.
-	if city.Alien[0].Trapped {
-		return true
-	}
-
-	// Mark alien as trapped and add city to the array with the trapped cities.
-	if len(city.Directions) == 0 {
-		fmt.Println("\nAlien", city.Alien[0].Uid, "is trapped in city", city.Name)
-		city.Alien[0].Trapped = true
-		m.CitiesTrapped = append(m.CitiesTrapped, city.Name)
-		return true
-	}
-
-	return false
 }

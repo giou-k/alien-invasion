@@ -8,7 +8,6 @@ import (
 type Alien struct {
 	Uid      int
 	CityName string
-	Dead     bool
 	Trapped  bool
 }
 
@@ -25,13 +24,12 @@ func (m *Map) InputAliens(alienNum int) error {
 		for _, currentCity := range m.Cities {
 			if currentCity.Uid == randCityUid {
 				// Check if city has already two aliens.
-				if len(currentCity.Alien) == 2 { // it might be ok, cause the first aliens will always be inserted in
-					// the first index, so if we have a second  then kaboom.checkit.
+				if len(currentCity.Alien) == 2 {
 					// If not a new random city uid is given, then this aliens will not invade any city.
 					rand.Seed(time.Now().UnixNano())
 
 					// The range of the random number must start from the cities that have not yet been used.
-					randCityUid = rand.Intn(len(m.Cities)-currentCity.Uid) + currentCity.Uid
+					randCityUid = rand.Intn(len(m.Cities)-currentCity.Uid+1) + currentCity.Uid
 					continue
 				}
 

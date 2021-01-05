@@ -13,7 +13,7 @@ type Alien struct {
 
 // InputAliens creates the aliens and places them randomly in a city. If a city has already two aliens, then we don't
 // input any other alien.
-func (m *Map) InputAliens(alienNum int) error {
+func (m *Map) InputAliens(alienNum int) {
 	m.Aliens = make(map[int]*Alien)
 
 	rand.Seed(time.Now().UnixNano())
@@ -47,14 +47,13 @@ func (m *Map) InputAliens(alienNum int) error {
 			}
 		}
 	}
-	return nil
+	return
 }
 
 func newAlien(i int, cityName string) *Alien {
 	return &Alien{
 		Uid:      i,
 		CityName: cityName,
-		Dead:     false,
 		Trapped:  false,
 	}
 }

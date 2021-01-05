@@ -41,11 +41,12 @@ func (m *Map) Bootstrap() error {
 			continue
 		}
 
-		// Assume that the line of file must start with the name of the city.
+		// Assume that each line in the file starts with the name of the city.
 		city := &City{
 			Uid:  cityUid,
 			Name: s[0],
 		}
+
 		city.Directions = make(map[string]string)
 
 		// Check if city has directions to other cities.

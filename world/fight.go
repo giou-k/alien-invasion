@@ -3,7 +3,7 @@ package world
 import "fmt"
 
 // Fight implements a fight between two aliens. First the aliens get deleted from city's alien array and secondly
-// the city gets deleted from the Map and the direction to this city from the other cities that exist in our Map.
+// the city gets deleted from the Map, plus the directions towards this city from other cities that exist in our Map.
 func (m *Map) Fight(city *City) {
 	fmt.Println("\nAlien ", m.Cities[city.Name].Alien[0].Uid, " is fighting with alien ",
 		+m.Cities[city.Name].Alien[1].Uid, " inside city ", city.Name)

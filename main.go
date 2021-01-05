@@ -31,10 +31,7 @@ func main() {
 	}
 
 	// Secondly input the aliens randomly.
-	err = m.InputAliens(alienNum)
-	if err != nil {
-		log.Fatal("error while matching aliens with cities: ", err)
-	}
+	m.InputAliens(alienNum)
 
 	// Iterate through cities.
 	// If a city has no aliens, then do nothing
